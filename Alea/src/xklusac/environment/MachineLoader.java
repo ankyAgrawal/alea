@@ -26,6 +26,7 @@ public class MachineLoader {
     private double cost;
     private String data_set;
     public int total_CPUs = 0;
+    public int total_disk=0;
 
     /**
      * Creates a new instance of MachineLoader
@@ -36,6 +37,7 @@ public class MachineLoader {
         this.cost = cost;
         this.data_set = data_set;
         this.total_CPUs = 0;
+        this.total_disk=0;
         init(data_set);
     }
 
@@ -84,14 +86,18 @@ public class MachineLoader {
         // create resources and machines from file
         for (int j = 0; j < lines.size(); j++) {
 
-            String[] values = ((String) lines.get(j)).split("\t");
+            String[] values = ((String) lines.get(j)).split(" ");
             //System.out.println(lines.get(j));
             int id = Integer.parseInt(values[0]);
             long ram = 1024;
+            long disk_size = 1024;
             if (values.length > 5) {
                 //ram in KB
                 ram = Long.parseLong(values[5]);
+                
             }
+        //    if(values.length==7)
+         //       disk_size = Long.parseLong(values[6]);
             int totalMachine = Integer.parseInt(values[2]);
             int totalPE = Integer.parseInt(values[3]);
             int peRating = Integer.parseInt(values[4]);
@@ -123,6 +129,8 @@ public class MachineLoader {
                     // need to store PE id and MIPS Rating
                     peList.add(new PE(k, peRating));
                 }
+                
+                
 
                 mList.add(new MachineWithRAM(m, peList, ram));
 

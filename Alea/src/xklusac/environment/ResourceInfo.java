@@ -134,6 +134,8 @@ public class ResourceInfo {
     public MachineList virt_machines;
 
     public int nowFreePE = 0;
+    
+    public long avg_computing_power=0;
 
     /**
      * Creates a new instance of ResourceInfo with "in schedule" and "on
@@ -259,6 +261,13 @@ public class ResourceInfo {
             return this.resource.getNumPE();
         }
     }
+    
+    public int calculate_avg_computingPower(){
+        
+    return this.resource.getNumFreePE()*this.resource.getMIPSRatingOfOnePE();
+    
+    }
+    
 
     /**
      * This method tests whether given resource (i.e., set of machines in a
@@ -469,7 +478,21 @@ public class ResourceInfo {
 
     }
 
-    // oznaci a odecte CPU a RAM u vsech virt uzlu, kde muze bezet uloha
+    
+    
+    public boolean canExecuteNowiHlba(GridletInfo gi){
+        
+        int required = gi.getNumPE();
+        int available = this.getNumFreePE();
+        
+        // check the resource usage
+        
+        if(required < available)
+            return true;
+        else
+            return false;
+    }
+// oznaci a odecte CPU a RAM u vsech virt uzlu, kde muze bezet uloha
     public void markSuitableNodes(GridletInfo gi) {
         MachineList machines = virt_machines;
 

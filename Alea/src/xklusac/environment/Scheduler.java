@@ -1414,6 +1414,8 @@ public class Scheduler extends GridSim {
 
     }
 
+    
+    
     public static boolean isGridletSuitable(ResourceInfo ri, GridletInfo gi) {
 
         if (!reqs) {
@@ -2043,7 +2045,13 @@ public class Scheduler extends GridSim {
             ExperimentSetup.queues.get(gl.getQueue()).setUsed(ExperimentSetup.queues.get(gl.getQueue()).getUsed() + gl.getNumPE());
         }
         gridletSubmit(gl, resID);
+        
         //System.out.println(gl.getGridletID()+ " is submitted to "+GridSim.getEntityName(resID)+", FREE CPUs left = " + getFreeCPUs());
+    }
+    
+    public void submitJobHlba(ComplexGridlet gl, int resId){
+    
+        gridletSubmit(gl, resId);
     }
 
     /**

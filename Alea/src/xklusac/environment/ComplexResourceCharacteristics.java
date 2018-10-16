@@ -41,7 +41,8 @@ public class ComplexResourceCharacteristics extends ResourceCharacteristics {
      * not used in Alea 2.0
      */
     private boolean failed;
-
+    
+    //private long diskOnOneMachine;
     /**
      * Creates a new instance of ComplexResourceCharacteristics
      */
@@ -52,6 +53,7 @@ public class ComplexResourceCharacteristics extends ResourceCharacteristics {
         this.setRamOnOneMachine(ram);
         this.setProperties(properties);
         this.setFailed(false);
+        //this.setDiskOnOneMachine(disk);
         //this.setCpu_ids_string(cpu_ids);
     }
 
@@ -61,6 +63,10 @@ public class ComplexResourceCharacteristics extends ResourceCharacteristics {
 
     public void setRamOnOneMachine(long ramOnOneMachine) {
         this.ramOnOneMachine = ramOnOneMachine;
+    }
+    
+    public void setDiskOnOneMachine(long diskOnOneMachine){
+        //this.diskOnOneMachine=diskOnOneMachine;
     }
 
     public String getProperties() {

@@ -17,6 +17,8 @@ import xklusac.algorithms.queue_based.EDF;
 import xklusac.algorithms.queue_based.multi_queue.Fairshare_EASY_Backfilling;
 import xklusac.algorithms.queue_based.SJF;
 import xklusac.algorithms.queue_based.multi_queue.FCFS;
+import xklusac.algorithms.queue_based.test;
+import xklusac.algorithms.schedule_based.iHlba;
 import alea.core.Registration;
 
 import eduni.simjava.Sim_system;
@@ -880,6 +882,16 @@ public class ExperimentSetup {
                     // this update would break the detection of fairshare changes in BF_CONS_Fair
                     use_compresion = true;
                     suff = "CONS-Fair-compr.";
+                }
+                
+                if(alg==24){
+                policy = new test(scheduler);
+                suff ="test";
+                }
+                
+                if(alg==25){
+                policy = new iHlba(scheduler);
+                suff="iHlba";
                 }
 
                 dirG[4] = (sel_alg+1) + "-" + suff;
